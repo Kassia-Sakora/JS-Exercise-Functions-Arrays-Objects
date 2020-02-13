@@ -194,8 +194,9 @@ function getCarInfoById(a,b) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(sc) {
+  const sort = sc.sort((a,b) => (a.car_model>b.car_model) ? 1:-1);
+  return sort;
 }
 
 /**
@@ -207,8 +208,12 @@ function sortCarInventory(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(m) {
+  const year = [];
+  for (let i=0; i<m.length; i++) {
+    year.push(m[i].car_year)
+  }
+  return year;
 }
 
 /**
@@ -223,8 +228,14 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(o,n) {
+  const old = [];
+  for (let i=0; i<o.length; i++) {
+    if (o[i].car_year<=n) {
+      old.push(o[i]);
+    }
+  }
+  return old;
 }
 
 /**
@@ -238,8 +249,17 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(G){
+  const german = [];
+  const cars = [`Audi`,`Mercedes-Benz`,`Volkswagen`,`BMW`]
+  for (let i=0; i<G.length; i++) {
+    for (let j=0; j<cars.length; j++) {
+      if (G[i].car_make===cars[j]) {
+        german.push(G[i])
+      }
+    }
+  }
+return german;
 }
 
 /**
@@ -260,9 +280,9 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a,b) => a+b;
+const addFive = (num) => num+5;
+const argTimesTwo = (num) => num*2;
 
 /**
  * ### Challenge `carMaker`
